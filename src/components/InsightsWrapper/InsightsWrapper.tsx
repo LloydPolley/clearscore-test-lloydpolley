@@ -1,24 +1,25 @@
-import Insights from "../Insights/Insights";
-import "./InsightsWrapper.css";
+import Insight from "../Insight/Insight";
+import styles from "./InsightsWrapper.module.scss";
 import Header from "../Heading/Heading";
 
 export default function InsightsWrapper({
-  cardsInfo,
+  insights,
 }: {
-  cardsInfo: {
+  insights: {
     title: string;
     body: string;
     impact: string;
+    onTrack: boolean;
   }[];
 }) {
   return (
-    <>
-      <Header title="Insights" />
-      <div className="insights-wrapper">
-        {cardsInfo.map((card) => (
-          <Insights key={card.title} track="On track" {...card} />
+    <div className={styles.insights}>
+      <Header title="Insights" className={styles.insights__title} />
+      <div className={styles.insights__wrapper}>
+        {insights.map((insight) => (
+          <Insight key={insight.title} {...insight} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

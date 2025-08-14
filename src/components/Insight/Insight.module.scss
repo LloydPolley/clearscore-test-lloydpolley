@@ -1,0 +1,46 @@
+@use "../../index.scss" as *;
+
+.insight {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: var(--text-lg);
+    font-weight: bold;
+    margin-bottom: var(--spacing-2);
+    order: 2;
+  }
+
+  &__body {
+    font-size: var(--text-md);
+    color: var(--color-description);
+    margin-top: 0;
+    order: 3;
+  }
+
+  @include md {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    &__title,
+    &__body {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.badge {
+  &__track {
+    order: 1;
+  }
+
+  &__impact {
+    order: 4;
+
+    @include md {
+      order: 1;
+      margin-left: var(--spacing-2);
+    }
+  }
+}

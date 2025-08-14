@@ -1,0 +1,70 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  background-color: var(--color-gallery);
+  margin: 0;
+}
+
+$breakpoint-sm: 375px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+:root {
+  --color-midnight: #253648;
+  --color-description: #747f8ad9;
+  --color-gallery: #f7f7f8;
+  --color-cta: #0f81a3;
+  --color-cta-hover: #66aec5;
+  --color-pill-green-text: #15693b;
+  --color-pill-green-bg: #ddf9ea;
+  --color-pill-orange-text: #764c25;
+  --color-pill-orange-bg: #fdefe2;
+  --color-pill-gray-bg: #eeeff1;
+
+  --radius-lg: 8px;
+  --radius-md: 4px;
+
+  --shadow-card: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.16);
+
+  --text-xl: 20px;
+  --text-lg: 16px;
+  --text-md: 14px;
+  --text-sm: 12px;
+
+  --spacing-6: 24px;
+  --spacing-4: 16px;
+  --spacing-2-5: 10px;
+  --spacing-2: 8px;
+  --spacing-1: 4px;
+  --spacing-0: 0.4px;
+}
+
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+.container {
+  padding: var(--spacing-6);
+}

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "./Card.css";
+import styles from "./Card.module.scss";
 
 export default function Card({
   className,
@@ -8,5 +8,5 @@ export default function Card({
   className?: string;
   children: ReactNode;
 }) {
-  return <div className={`card ${className}`}>{children}</div>;
+  return <div className={`${styles.card} ${className}`}>{children}</div>;
 }

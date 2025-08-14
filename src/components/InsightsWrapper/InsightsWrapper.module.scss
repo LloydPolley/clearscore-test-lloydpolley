@@ -1,0 +1,42 @@
+@use "../../index.scss" as *;
+
+.insights {
+  &__title {
+    padding-left: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+    margin-bottom: -24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--spacing-2);
+    overflow-x: scroll;
+    padding: var(--spacing-6);
+
+    > * {
+      flex: 0 0 47.5%;
+      min-width: 0;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include md {
+      flex-wrap: wrap;
+      gap: var(--spacing-2);
+      overflow-x: visible;
+
+      > * {
+        flex: 0 0 calc(50% - var(--spacing-2) / 2);
+      }
+    }
+
+    @include lg {
+      > * {
+        flex: 0 0 calc(33.333333% - var(--spacing-2));
+      }
+    }
+  }
+}

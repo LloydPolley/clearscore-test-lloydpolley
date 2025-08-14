@@ -1,29 +1,30 @@
 import { useState, useEffect } from "react";
+import { generateInsights } from "../utils/generateInsights";
+import type { InsightType, InsightData } from "../types";
 
 export default function useInsights(url: string) {
-  const [data, setData] = useState(null);
+  const [insights, setInsights] = useState<InsightType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | undefined>(undefined);
 
   useEffect(() => {
-    if (!url) return;
-    let ignore = false;
-
     const fetchData = async () => {
       setLoading(true);
+      setError(undefined);
       try {
-        const res = await fetch(url);
-        const json = await res.json();
-        if (!ignore) setData(json);
+        const response = await fetch(url);
+        const data = (await response.json()) as InsightData;
+        setInsights(generateInsights(data));
+      } catch (err: any) {
+        setError(err);
+        console.error(err);
       } finally {
-        if (!ignore) setLoading(false);
+        setLoading(false);
       }
     };
 
     fetchData();
-    return () => {
-      ignore = true;
-    };
   }, [url]);
 
-  return { data, loading };
+  return { insights, loading, error };
 }

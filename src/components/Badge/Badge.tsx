@@ -1,29 +1,24 @@
-import "./Badge.css";
+import type { ReactNode } from "react";
+import styles from "./Badge.module.scss";
+
+type BadgeVariant = "on" | "off" | "impact";
+
+interface BadgeProps {
+  variant: BadgeVariant;
+  children: ReactNode;
+  className?: string;
+}
 
 export default function Badge({
-  className,
+  variant,
   children,
-  track,
-}: {
-  className?: string;
-  children: string;
-  track?: boolean;
-}) {
-  let trackClass = "";
+  className = "",
+}: BadgeProps) {
+  const variantClass = styles[`badge--${variant}`];
 
-  switch (track) {
-    case true:
-      trackClass = "badge__on";
-      break;
-    case false:
-      trackClass = "badge__off";
-      break;
-    default:
-      trackClass = "badge__impact";
-      break;
-  }
-
-  console.log("trackClass", trackClass);
-
-  return <div className={`badge ${trackClass} ${className}`}>{children}</div>;
+  return (
+    <div className={`${styles.badge} ${variantClass} ${className}`}>
+      {children}
+    </div>
+  );
 }
