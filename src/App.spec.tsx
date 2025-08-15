@@ -50,6 +50,16 @@ describe("App", () => {
     render(<App />);
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();
-    expect(screen.getByTestId("modal")).toBeInTheDocument();
+  });
+  it("renders error message when error from fetch", () => {
+    mockUseInsights.mockReturnValue({
+      insights: [],
+      loading: false,
+      error: new Error("Something went wrong"),
+    });
+
+    render(<App />);
+
+    expect(screen.getByText("Error fetching insights")).toBeInTheDocument();
   });
 });

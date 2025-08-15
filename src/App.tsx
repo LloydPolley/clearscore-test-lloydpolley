@@ -6,11 +6,13 @@ import Modal from "./components/Modal/Modal";
 function App() {
   const { insights, loading, error } = useInsights(URL);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error fetching insights</p>;
+  if (!insights?.length) return <p>No insights found</p>;
+
   return (
     <>
-      {insights && <InsightsWrapper insights={insights} />}
-      {loading && <p>Loading...</p>}
-      {error && <p>Error fetching insights</p>}
+      <InsightsWrapper insights={insights} />
       <Modal />
     </>
   );

@@ -15,7 +15,7 @@ export default function useInsights(url: string) {
         const response = await fetch(url);
         const data = await response.json();
         setInsights(generateInsights(data));
-      } catch (err: any) {
+      } catch (err: Error | any) {
         setError(err);
         console.error(err);
       } finally {
