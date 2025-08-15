@@ -1,4 +1,4 @@
-import type { ElectoralRollType } from "../types";
+import type { ElectoralRollType } from "../../types";
 
 export const checkElectoralRoll = (
   electoralRoll: ElectoralRollType

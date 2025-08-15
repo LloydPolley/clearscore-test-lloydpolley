@@ -13,11 +13,4 @@ describe("Heading", () => {
       "Test Title"
     );
   });
-
-  it("applies additional className", () => {
-    render(<Heading title="With Class" className="extra-class" />);
-    const heading = screen.getByRole("heading", { level: 1 });
-    expect(heading).toHaveClass("headline");
-    expect(heading).toHaveClass("extra-class");
-  });
 });

@@ -13,7 +13,6 @@ $breakpoint-xl: 1280px;
 
 :root {
   --color-midnight: #253648;
-  --color-description: #747f8ad9;
   --color-gallery: #f7f7f8;
   --color-cta: #0f81a3;
   --color-cta-hover: #66aec5;
@@ -27,6 +26,9 @@ $breakpoint-xl: 1280px;
   --radius-md: 4px;
 
   --shadow-card: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.16);
+
+  --sidebar-width: 400px;
+  --overlay-color: rgba(0, 0, 0, 0.5);
 
   --text-xl: 20px;
   --text-lg: 16px;

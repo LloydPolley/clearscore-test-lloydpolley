@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { generateInsights } from "../utils/generateInsights";
-import type { InsightType, InsightData } from "../types";
+import { generateInsights } from "../../utils/generateInsights";
+import type { InsightType } from "../../types";
 
 export default function useInsights(url: string) {
   const [insights, setInsights] = useState<InsightType[]>([]);
@@ -13,7 +13,7 @@ export default function useInsights(url: string) {
       setError(undefined);
       try {
         const response = await fetch(url);
-        const data = (await response.json()) as InsightData;
+        const data = await response.json();
         setInsights(generateInsights(data));
       } catch (err: any) {
         setError(err);

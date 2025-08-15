@@ -1,10 +1,12 @@
-import { checkCreditUtil } from "./checkCreditUtil";
-import { checkElectoralRoll } from "./checkElectoralRoll";
-import { checkPublicInfo } from "./checkPublicInfo";
+import { checkCreditUtil } from "./creditUtils/checkCreditUtil";
+import { checkElectoralRoll } from "./electoralRoll/checkElectoralRoll";
+import { checkPublicInfo } from "./publicInfo/checkPublicInfo";
 import type { InsightData, InsightType } from "../types";
 
 export const generateInsights = (data: InsightData): InsightType[] => {
   const { accounts, personal } = data;
+
+  console.log("data", data);
   return [
     {
       title: "Electoral roll",

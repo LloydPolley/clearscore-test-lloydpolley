@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { generateInsights } from "./generateInsights";
-import * as creditUtil from "./checkCreditUtil";
-import * as electoralRoll from "./checkElectoralRoll";
-import * as publicInfo from "./checkPublicInfo";
+import * as creditUtil from "./creditUtils/checkCreditUtil";
+import * as electoralRoll from "./electoralRoll/checkElectoralRoll";
+import * as publicInfo from "./publicInfo/checkPublicInfo";
 
 describe("generateInsights", () => {
   const mockAccounts = [

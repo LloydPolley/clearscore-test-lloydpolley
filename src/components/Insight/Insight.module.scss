@@ -9,13 +9,23 @@
     font-weight: bold;
     margin-bottom: var(--spacing-2);
     order: 2;
+    color: var(--color-midnight);
   }
 
   &__body {
     font-size: var(--text-md);
-    color: var(--color-description);
+    color: var(--color-midnight);
     margin-top: 0;
     order: 3;
+  }
+
+  &__button {
+    all: unset;
+    color: var(--color-cta);
+    text-decoration: underline;
+    font-size: var(--text-sm);
+    order: 4;
+    margin-bottom: var(--spacing-2);
   }
 
   @include md {

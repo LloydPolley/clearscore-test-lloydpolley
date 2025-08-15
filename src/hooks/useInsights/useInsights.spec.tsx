@@ -1,9 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import useInsights from "./useInsights";
-import { generateInsights } from "../utils/generateInsights";
+import { generateInsights } from "../../utils/generateInsights";
 
-vi.mock("../utils/generateInsights");
+vi.mock("../../utils/generateInsights");
+const mockGenerateInsights = vi.mocked(generateInsights);
 
 describe("useInsights", () => {
   const mockData = {
@@ -11,16 +12,12 @@ describe("useInsights", () => {
     personal: { electoralRoll: [], publicInfo: { courtAndInsolvencies: [] } },
   };
 
-  beforeEach(() => {
-    vi.resetAllMocks();
-  });
-
   it("fetches data and sets insights", async () => {
-    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
-      json: async () => mockData,
-    } as any);
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve(mockData),
+    });
 
-    (generateInsights as any).mockReturnValue([
+    mockGenerateInsights.mockReturnValue([
       { title: "Test", body: "Body", impact: "Medium", onTrack: true },
     ]);
 
@@ -40,9 +37,8 @@ describe("useInsights", () => {
     expect(result.current.error).toBeUndefined();
   });
 
-  it("sets error when fetch fails", async () => {
-    const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-    vi.spyOn(globalThis, "fetch").mockRejectedValueOnce(new Error("fail"));
+  it("handles fetch errors", async () => {
+    globalThis.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
 
     const { result } = renderHook(() => useInsights("/test-url"));
 
@@ -52,7 +48,5 @@ describe("useInsights", () => {
 
     expect(result.current.insights).toEqual([]);
     expect(result.current.error).toBeInstanceOf(Error);
-
-    consoleSpy.mockRestore();
   });
 });

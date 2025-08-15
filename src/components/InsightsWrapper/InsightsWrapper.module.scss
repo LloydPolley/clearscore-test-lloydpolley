@@ -10,7 +10,7 @@
   &__wrapper {
     display: flex;
     flex-wrap: nowrap;
-    gap: var(--spacing-2);
+    gap: var(--spacing-4);
     overflow-x: scroll;
     padding: var(--spacing-6);
 
@@ -25,17 +25,17 @@
 
     @include md {
       flex-wrap: wrap;
-      gap: var(--spacing-2);
+      gap: var(--spacing-4);
       overflow-x: visible;
 
       > * {
-        flex: 0 0 calc(50% - var(--spacing-2) / 2);
+        flex: 0 0 calc(50% - var(--spacing-4) / 2);
       }
     }
 
     @include lg {
       > * {
-        flex: 0 0 calc(33.333333% - var(--spacing-2));
+        flex: 0 0 calc(33.333333% - var(--spacing-4));
       }
     }
   }

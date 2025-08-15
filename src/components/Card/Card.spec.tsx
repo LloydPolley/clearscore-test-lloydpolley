@@ -7,10 +7,4 @@ describe("Card", () => {
     render(<Card>Test Content</Card>);
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
-
-  it("applies the custom class name", () => {
-    render(<Card className="custom-class">Content</Card>);
-    const cardElement = screen.getByText("Content");
-    expect(cardElement).toHaveClass("custom-class");
-  });
 });

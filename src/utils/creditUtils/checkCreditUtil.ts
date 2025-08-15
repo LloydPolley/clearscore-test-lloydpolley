@@ -1,4 +1,4 @@
-import type { AccountsType } from "../types";
+import type { AccountsType } from "../../types";
 
 export const checkCreditUtil = (accounts: AccountsType[]): boolean => {
   const creditCard = accounts?.find(

@@ -14,13 +14,30 @@ export default function Insight({
   onTrack: boolean;
   impact: string;
 }) {
+  const isOnTrackText = onTrack ? onTrackText : offTrackText;
+  const openModal = () => {
+    window.dispatchEvent(
+      new CustomEvent("openModal", {
+        detail: {
+          onTrack,
+          isOnTrackText,
+        },
+      })
+    );
+  };
+
   return (
     <Card className={styles.insight}>
       <Badge className={styles.badge__track} variant={onTrack ? "on" : "off"}>
-        {onTrack ? onTrackText : offTrackText}
+        {isOnTrackText}
       </Badge>
       <p className={styles.insight__title}>{title}</p>
       <p className={styles.insight__body}>{body}</p>
+      {title === "Electoral roll" && (
+        <button className={styles.insight__button} onClick={openModal}>
+          Learn More
+        </button>
+      )}
       <Badge className={styles.badge__impact} variant="impact">
         {impact}
       </Badge>
