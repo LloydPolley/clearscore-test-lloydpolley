@@ -2,7 +2,6 @@ import styles from "./Modal.module.scss";
 import Badge from "../Badge/Badge";
 import { useModal } from "../../hooks/useModal/useModal";
 import Heading from "../Heading/Heading";
-
 export default function Modal() {
   const { isOpen, data, loading, error, modalData, closeModal } = useModal();
 
@@ -21,11 +20,10 @@ export default function Modal() {
       >
         <button className={styles.modal__close} onClick={closeModal} />
 
-        {loading && <p>Loading...</p>}
+        {loading && <p className={styles.modal__loading}>Loading...</p>}
+        {error && <p className={styles.modal__error}>Error: {error}</p>}
 
-        {error && <p>Error: {error}</p>}
-
-        {modalData && data && (
+        {!loading && !error && modalData && data && (
           <div className={styles.modal__content}>
             <Badge variant={modalData.onTrack ? "on" : "off"}>
               {modalData.isOnTrackText}
